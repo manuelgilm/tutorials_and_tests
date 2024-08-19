@@ -3,8 +3,6 @@ from utils import query_index
 from dotenv import load_dotenv
 import os
 
-import requests
-
 load_dotenv()
 
 PASSWORD = os.getenv("PASSWORD")
@@ -23,7 +21,8 @@ results = query_index(
 
 for document in results:
     print(f"Movie Name: {document['title']}, \n Plot: {document['plot']}\n")
-    
+
+# Code to embed the plots and store them in the collection
 # for doc in collection.find({'plot': {'$exists': True}}).limit(5):
 #     payload = {"inputs": doc['plot']}
 #     embeddings = generate_embeddings(payload)
