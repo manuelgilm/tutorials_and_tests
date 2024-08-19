@@ -1,10 +1,12 @@
 from config.mongodb import mongo
 
+
 def list_all_collections():
     """
     List all the collections in the MongoDB database
     """
     return mongo.db.list_collection_names()
+
 
 def insert_document(collection_name: str, document: dict):
     """

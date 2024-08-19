@@ -15,4 +15,4 @@ def get_mongodb_uri() -> str:
         )
 
     mongo_uri = f"mongodb+srv://{username}:{password}@cluster0.hd6rj.mongodb.net/{db_name}?retryWrites=true&w=majority&appName=Cluster0"
-    return mongo_uri
+    return mongo_uri   
