@@ -43,3 +43,30 @@ def generate_embeddings(payload: str) -> List[float]:
         )
 
     return response.json()
+
+
+def query_index(query: str, index_name: str, collection) -> List:
+    """
+    Query the index with the given query and return the results.
+
+    :param query: The query to search for.
+    :param index_name: The name of the index to query.
+    :param collection: The collection to query.
+    :return: The results of the query
+    """
+
+    results = collection.aggregate(
+        [
+            {
+                "$vectorSearch": {
+                    "queryVector": generate_embeddings(query),
+                    "path": "plot_embedding_hf",
+                    "numCandidates": 100,
+                    "limit": 4,
+                    "index": index_name,
+                }
+            }
+        ]
+    )
+
+    return results

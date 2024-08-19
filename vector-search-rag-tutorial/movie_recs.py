@@ -1,5 +1,5 @@
 from utils import get_mongo_client
-from utils import generate_embeddings
+from utils import query_index
 from dotenv import load_dotenv
 import os
 
@@ -15,8 +15,16 @@ client = get_mongo_client(PASSWORD)
 db = client.sample_mflix
 collection = db.movies
 
-for doc in collection.find({'plot': {'$exists': True}}).limit(5):
-    payload = {"inputs": doc['plot']}
-    embeddings = generate_embeddings(payload)
-    collection.update_one({'_id': doc['_id']}, {'$set': {'plot_embedding_hf': embeddings}})
+query = {"inputs": "Imaginary characters from outer space at war"}
+
+results = query_index(
+    query=query, index_name="plotSemanticSearch", collection=collection
+)
+
+for document in results:
+    print(f"Movie Name: {document['title']}, \n Plot: {document['plot']}\n")
     
+# for doc in collection.find({'plot': {'$exists': True}}).limit(5):
+#     payload = {"inputs": doc['plot']}
+#     embeddings = generate_embeddings(payload)
+#     collection.update_one({'_id': doc['_id']}, {'$set': {'plot_embedding_hf': embeddings}})
