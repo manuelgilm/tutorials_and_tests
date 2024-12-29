@@ -1,0 +1,13 @@
+services:
+
+  # Service 1
+  app1:
+    build: app1
+    ports:
+      - "8000:8000"
+
+  # Service 2
+  app2:
+    build: app2
+    ports:
+      - "8001:8001"
