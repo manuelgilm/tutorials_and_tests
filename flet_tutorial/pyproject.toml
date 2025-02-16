@@ -8,7 +8,8 @@ packages = [
     { include = "first_python_app" },
     { include = "navigation"},
     { include = "login_screen"},
-    { include = "reusable_components"}
+    { include = "reusable_components"},
+    { include = "sticky_notes"}
 ]
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -20,7 +21,7 @@ first_app = 'entrypoints.first_app:run'
 login_screen = 'entrypoints.login_screen:run'
 reusable = "entrypoints.reusable:run"
 navigation = "entrypoints.navigation:run"
-
+sticky = "entrypoints.sticky_notes:run"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
