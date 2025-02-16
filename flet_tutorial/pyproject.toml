@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "flet-tutorial"
+version = "0.1.0"
+description = ""
+authors = ["Manuel Gil <manuelgilsitio@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "first_python_app" }
+]
+[tool.poetry.dependencies]
+python = "^3.11"
+flet = {extras = ["all"], version = "^0.26.0"}
+flet-core = "^0.24.1"
+
+[tool.poetry.scripts]
+first_app = 'entrypoints.first_app:run'
+login_screen = 'entrypoints.login_screen:run'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
