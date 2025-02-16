@@ -1,5 +1,5 @@
-from login_screen.main import main
 import flet as ft
+from reusable_components.main import main
 
 
 def run():
