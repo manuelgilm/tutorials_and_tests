@@ -10,7 +10,8 @@ packages = [
     { include = "login_screen"},
     { include = "reusable_components"},
     { include = "sticky_notes"},
-    { include = "responsive_row"}
+    { include = "responsive_row"},
+    { include = "tabs" }
 ]
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -24,6 +25,7 @@ reusable = "entrypoints.reusable:run"
 navigation = "entrypoints.navigation:run"
 sticky = "entrypoints.sticky_notes:run"
 galeria = "entrypoints.galeria:run"
+tab = "entrypoints.tabs:run"
 
 [build-system]
 requires = ["poetry-core"]
