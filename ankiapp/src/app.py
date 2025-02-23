@@ -7,7 +7,6 @@ class App(AppLayout):
         self.page = page
         super().__init__()
         self.sidebar = Sidebar()
-        # self.controls.append(self.sidebar)
         
 
     def initialize(self):
