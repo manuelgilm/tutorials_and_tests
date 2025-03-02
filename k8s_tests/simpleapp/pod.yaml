@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+  - name: simple-webapp
+    image: simpleapp:v1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi    
+    ports:
+    - containerPort: 8000
+      name: my-pod
+      protocol: TCP
