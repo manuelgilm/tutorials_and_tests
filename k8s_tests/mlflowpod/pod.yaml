@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mlflow-pod
+spec:
+  containers:
+  - name: mlflow
+    image: ghcr.io/mlflow/mlflow:v2.20.1
+    command:
+      - mlflow
+      - server
+    env:
+      - name: MLFLOW_BACKEND_STORE_URI
+        value: sqlite:///mnt/mlflow.db
+      - name: MLFLOW_HOST
+        value: "0.0.0.0"
+      - name: MLFLOW_PORT
+        value: "5000"
+    volumeMounts:
+      - name: mlflow-backend-store
+        mountPath: mnt/
+    resources:
+      requests:
+        memory: "1024Mi"
+        cpu: "1000m"
+      limits:
+        memory: "2048Mi"
+        cpu: "5000m"
+    ports:
+    - containerPort: 5000
+      name: http
+      protocol: TCP
+
+  volumes:
+  - name: mlflow-backend-store
+    emptyDir: {}
