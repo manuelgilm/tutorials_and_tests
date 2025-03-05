@@ -29,18 +29,18 @@ spec:
     ports:
     - containerPort: 5000
       protocol: TCP
-  - name: simple-webapp
-    image: simpleapp:v1
+  - name: app
+    image: simpleexplist:v1
     env:
       - name: MLFLOW_TRACKING_URI
         value: http://localhost:5000
     resources:
       requests:
-        cpu: 100m
-        memory: 128Mi
+        cpu: 1000m
+        memory: 512Mi
       limits:
-        cpu: 250m
-        memory: 256Mi
+        cpu: 2000m
+        memory: 1024Mi
     ports:
     - containerPort: 8000
       protocol: TCP

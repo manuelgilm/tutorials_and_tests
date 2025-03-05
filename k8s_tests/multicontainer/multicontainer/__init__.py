@@ -21,8 +21,7 @@ def get_experiment(experiment_name: str = "default"):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
     print("MLFLOW_TRACKING_URI:", tracking_uri)
-    mlflow.set_tracking_uri(tracking_uri)
-
+    
     experiment = mlflow.get_experiment_by_name(experiment_name)
     if experiment is None:
         return JSONResponse(
