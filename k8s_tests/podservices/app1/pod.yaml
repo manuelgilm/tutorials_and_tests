@@ -9,8 +9,10 @@ spec:
   - name: app1
     image: app1:v1
     env:
-    - name: MLFLOW_SERVICE
-      value: mlflow-service
+    - name: MLFLOW_SERVICE_PORT
+      value: "5000"
+    - name: MLFLOW_SERVICE_HOST
+      value: "10.106.252.55"
     resources:
       requests:
         memory: "512Mi"
@@ -30,5 +32,5 @@ spec:
     app: app1
   ports:
     - protocol: TCP
-      port: 8001
+      port: 8000
       targetPort: 8000
