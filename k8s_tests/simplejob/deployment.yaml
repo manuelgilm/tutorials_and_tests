@@ -1,25 +1,28 @@
 apiVersion: apps/v1
-kind: Deployment
-metadata: 
+kind: Deployment 
+metadata:
   name: mlflow-deployment
-  labels: 
-    app: mlflow
 spec:
   replicas: 1
+  revisionHistoryLimit: 3
   selector:
-    matchLabels: 
+    matchLabels:
       app: mlflow
-    
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata: 
-      labels: 
+      labels:
         app: mlflow
     spec:
-      containers: 
+      containers:
       - name: mlflow
         image: ghcr.io/mlflow/mlflow:v2.20.1
         command:
-          - mlflow 
+          - mlflow
           - server
         env:
           - name: MLFLOW_BACKEND_STORE_URI
@@ -39,24 +42,10 @@ spec:
             memory: "2048Mi"
             cpu: "5000m"
         ports:
-          - containerPort: 5000
-            name: http 
-            protocol: TCP
+        - containerPort: 5000
+          name: http
+          protocol: TCP
+
       volumes:
-        - name: mlflow-backend-store
-          emptyDir: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mlflow-service
-  labels:
-    app: mlflow
-spec:
-  selector:
-    app: mlflow
-  ports:
-    - port: 5000
-      targetPort: 5000
-      protocol: TCP
-      
+      - name: mlflow-backend-store
+        emptyDir: {}

@@ -10,5 +10,9 @@ spec:
       containers:
       - name: training-container
         image: training:v1
+        env:
+          - name: MLFLOW_TRACKING_URI
+            value: "http://$(MLFLOW_SERVICE_SERVICE_HOST):$(MLFLOW_SERVICE_SERVICE_PORT)"
         command: ["python", "train.py"]
       restartPolicy: Never
+        
