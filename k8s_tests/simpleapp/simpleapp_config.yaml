@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap 
+metadata: 
+  name: simple-app-config
+data: 
+  SOME_ENV: "some_value_updated"
+  SOME_OTHER_ENV: "some_other_value"

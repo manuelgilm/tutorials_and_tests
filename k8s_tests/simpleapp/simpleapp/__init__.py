@@ -1,9 +1,10 @@
 from fastapi import FastAPI 
-
+import os 
 app = FastAPI()
 
 
 @app.get("/")
 async def check():
-    return {"message": "Hello World"}
+    some = os.getenv("SOME_ENV", None)
+    return {"message": "Hello World", "SOME_ENV": some}
 
