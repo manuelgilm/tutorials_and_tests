@@ -1,0 +1,19 @@
+[project]
+name = "chromastart"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Manuel Gil", email = "manuelgilsitio@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=1.3.0",
+]
+
+[project.scripts]
+chromastart = "chromastart:main"
+
+[build-system]
+requires = ["uv_build>=0.9.4,<0.10.0"]
+build-backend = "uv_build"
